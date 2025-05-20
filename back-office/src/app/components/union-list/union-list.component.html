@@ -1,0 +1,86 @@
+<div class="flex justify-between border-t-2 border-b-2 mt-16 items-center pl-16 pr-16 pt-6 pb-6 bg-gray-100">
+    <div class="flex flex-col mt-2">
+        <span class="text-2xl font-black">
+            {{"Meu Painel " }}
+        </span>
+        <span class="font-medium">
+            {{"SINDICOS" }}
+        </span>
+    </div>
+    <button
+        class="text-white h-11 font-bold rounded-lg bg-blue-600 p-2 font-button items-center flex hover:scale-105 transition-transform duration-300 truncate"
+        type="submit" (click)="createUnion()">
+        <mat-icon class="text-base">add</mat-icon>{{"Novo Sindico"}}
+    </button>
+</div>
+
+<div class="flex flex-col pl-16 pr-16">
+    <div class="flex justify-between items-center mt-10">
+        <div class="relative">
+            <input class="h-10 rounded w-full pl-10 items-start border" name="shread"
+                [placeholder]="'pesquisar porsindico '" [(ngModel)]="searchValue"
+                (ngModelChange)="filter(searchValue)" />
+            <i class="material-icons absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">search</i>
+        </div>
+
+        <div class="h-8 items-center flex">
+            <mat-form-field appearance="fill" class="w-48">
+                <mat-select [(value)]="selectedOrder" (selectionChange)="filter($event.value)">
+                    <mat-option value="order">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="swap_vert"
+                            class="inline-block w-5 h-5 mr-2"></mat-icon> {{'Ordernar Por'}}
+                    </mat-option>
+                    <mat-option value="order"> {{'de A a Z'}}</mat-option>
+                    <mat-option value="date">
+                        {{'data de criação'}}
+                    </mat-option>
+                    <mat-option value="Active"> Status: {{'Ativo'}} </mat-option>
+                    <mat-option value="Desactive"> Status: {{'Inativo'}} </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- table-->
+    <div class="mat-elevation-z8 border-2 rounded-lg mt-4 shadow-lg">
+        <table mat-table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="condominium">
+            <th mat-header-cell *matHeaderCellDef> Condominio </th>
+            <td mat-cell *matCellDef="let element"> {{element.condominium}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+</div>
