@@ -5,7 +5,7 @@
       </div>
         <div *ngFor="let item of menuList" class="items-center hover:bg-gray-700 hover:rounded-md hover:max-w-56 hover:h-10 hover:ml-2"
         [ngClass]="{'bg-gray-700 rounded-md max-w-56 ml-2': item.selected}">
-        <a *ngIf="item.visible"  class="flex text-black ml-5 mt-2 h-10 items-center"
+        <a *ngIf="item.visible" [routerLink]="item.route"  class="flex text-black ml-5 mt-2 h-10 items-center"
           (click)="selectItem(item)">
           <div class="flex">
             <span class="text-black ml-3 text-base">{{item.name}}</span>

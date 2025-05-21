@@ -8,7 +8,7 @@
         </span>
     </div>
     <button
-        class="text-white h-11 font-bold rounded-lg bg-blue-600 p-2 font-button items-center flex hover:scale-105 transition-transform duration-300 truncate"
+        class="text-white h-11 font-normal rounded-lg bg-blue-600 p-2 font-button items-center flex hover:scale-105 transition-transform duration-300 truncate"
         type="submit" (click)="createUnion()">
         <mat-icon class="text-base">add</mat-icon>{{"Novo Sindico"}}
     </button>
@@ -18,7 +18,7 @@
     <div class="flex justify-between items-center mt-10">
         <div class="relative">
             <input class="h-10 rounded w-full pl-10 items-start border" name="shread"
-                [placeholder]="'pesquisar porsindico '" [(ngModel)]="searchValue"
+                [placeholder]="'pesquisar por sindico'" [(ngModel)]="searchValue"
                 (ngModelChange)="filter(searchValue)" />
             <i class="material-icons absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400">search</i>
         </div>

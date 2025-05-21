@@ -1,0 +1,84 @@
+<div class="h-full">
+    <div class="flex justify-between border-t-2 border-b-2 mt-16 items-center pl-16 pr-16 pt-6 pb-6 bg-gray-100">
+        <div class="flex flex-col mt-2">
+            <span class="text-2xl font-black">
+                {{"Sindico"}}
+            </span>
+            <span class="font-medium">
+                {{"Faça o cadastro do Sindico facilmente no sistema" }}
+            </span>
+        </div>
+
+        <div class="flex">
+            <button class="border font-normal rounded-lg p-2 mr-3 hover:scale-105 transition-transform duration-300"
+                type="submit" (click)="backPage()">
+                {{ "voltar" }}
+            </button>
+
+            <button
+                class="text-white font-normal rounded-lg bg-blue-600 p-2 font-button items-center flex hover:scale-105 transition-transform duration-300 truncate"
+                type="submit" (click)="save()">
+                <mat-icon class="text-base">add</mat-icon>{{"Salvar"}}
+            </button>
+        </div>
+    </div>
+
+
+    <div class="pt-6 flex justify-start flex-col">
+        <div class="flex justify-around">
+            <div class="flex flex-col justify-center">
+                <img src="public/icons/user-plus-01.svg" alt="gerent" class="w-10 h-10 mb-4" />
+                <span class="font-extrabold text-2xl">
+                    {{ "Informações do Sindico" }}
+                </span>
+                <span class="text-base">
+                    {{ "Preencha os dados pessoais."}}
+                </span>
+            </div>
+            <mat-card class="w-4/12" appearance="outlined">
+                <mat-card-content class="shadow-2xl">
+                    <label class="text-xs">{{
+                        "Nome Completo"
+                        }}</label>
+                    <input class="h-10 rounded-xl mb-4 w-full items-start p-4 border" [placeholder]="'Nome Completo'"
+                        [(ngModel)]="unionDTO.name" name="name" />
+
+                    <div>
+                        <label class="text-xs">{{ "E-mail"}}</label>
+                        <input class="h-10 rounded-xl mb-4 w-full items-start p-2 border" [placeholder]="'E-MAIL' "
+                            name="email" mask="A*@A*.SSS" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            #emailInput="ngModel" [(ngModel)]="unionDTO.email" />
+
+                        <div *ngIf="emailInput.invalid && emailInput.touched" class="text-red-500 text-sm">
+                            <span *ngIf="emailInput.errors?.['required']">{{ "LOGIN.REQUIRED_EMAIL" }}</span>
+                            <span *ngIf="emailInput.errors?.['pattern']">{{ "LOGIN.INVALID_EMAIL" }}</span>
+                        </div>
+                    </div>
+
+                    <label class="text-xs">{{ "Telefone ou Celular"}}</label>
+                    <input class="h-10 rounded-xl mb-4 w-full items-start p-2 border"
+                        [placeholder]="'Telefone ou Celular' " mask="(00) 00000-0000" [(ngModel)]="unionDTO.phone" />
+
+                    <label class="text-xs">{{ "Tipo"}}</label>
+                    <input class="h-10 rounded-xl mb-4 w-full items-start p-2 border" [placeholder]="'Tipo'"
+                        [ngModel]="unionDTO.type" />
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div class="flex justify-end bottom-0 items-end border-t-2 border-b-2 mt-16 pl-16 pr-16 pt-6 pb-6 bg-gray-100"> 
+    <div class="flex">
+        <button class="border font-normal rounded-lg p-2 mr-3 hover:scale-105 transition-transform duration-300"
+            type="submit" (click)="backPage()">
+            {{ "voltar" }}
+        </button>
+
+        <button
+            class="text-white font-normal rounded-lg bg-blue-600 p-2 font-button items-center flex hover:scale-105 transition-transform duration-300 truncate"
+            type="submit" (click)="save()">
+            <mat-icon class="text-base">add</mat-icon>{{"Salvar"}}
+        </button>
+    </div>
+</div>

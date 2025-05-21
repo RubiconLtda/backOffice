@@ -14,6 +14,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatOption } from '@angular/material/core';
 import { MatFormField, MatSelect } from '@angular/material/select';
 import { UnionsTable } from '../enum/genericEnum';
+import { Router, RouterModule } from "@angular/router";
+
 
 @Component({
   selector: 'app-union-list',
@@ -28,6 +30,7 @@ import { UnionsTable } from '../enum/genericEnum';
     MatOption,
     MatSelect,
     MatFormField,
+    RouterModule,
   ],
   templateUrl: './union-list.component.html',
   styleUrl: './union-list.component.css',
@@ -43,22 +46,24 @@ export class UnionListComponent implements AfterViewInit {
   public displayedColumns: string[] = ['id', 'name', 'condominium', 'email', 'status'];
 
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router,
+  ) {}
 
   public ngAfterViewInit() {
     this.dataSource.data = ELEMENT_DATA;
     this.dataSource.paginator = this.paginator;
-    debugger;
     this.changeDetectorRef.detectChanges();
   }
 
   public createUnion() {
-    console.log('Create Union');
+    debugger;
+    this.router.navigate(['union-form']);
   }
 
   public filter(searchValue: string) {
     console.log('Filter:', searchValue);
   }
+
 }
 
 const ELEMENT_DATA: UnionsTable[] = [
